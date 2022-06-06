@@ -8,10 +8,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <%= yield %>
+    <%= link_to "LOGO", root_path, class: 'nav-link text-dark' %>
     <% if customer_signed_in? %>
               <li class="nav-item">
                 <%= link_to "商品一覧",admin_items_path, method: :get, class: 'nav-link text-dark' %>
@@ -39,8 +37,14 @@
                 <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+                <%= link_to "ログイン", new_admin_session_path, class: 'nav-link text-dark' %>
               </li>
               <% end %>
+  </head>
+
+  <body>
+    <%= yield %>
+
+
   </body>
 </html>
