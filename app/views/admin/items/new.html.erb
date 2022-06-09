@@ -2,7 +2,7 @@
 
 <h2>商品新規登録</h2>
 
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
     <div class="form_with">
     <label class="col-sm-3">商品画像</label>
     <label class="col-sm-9">
@@ -24,17 +24,15 @@
       </label>
     </div>
     <!--<h3>ジャンル</h3>-->
-      <%= form_with(model: @genre, local: true) do |f| %>
         <div class="form-group">
           <label class="col-sm-3">
             <%= f.label :genre, 'ジャンル' %>
           </label>
           <label class="col-sm-9">
-            <%= f.select :genre, {'ケーキ': 1, 'クッキー': 2,}, {include_blank: '選択してください'}, {class: 'form-control' , required: true } %>
+            <%= f.select :genre_id, {'ケーキ': 1, 'クッキー': 2,}, {include_blank: '選択してください'}, {class: 'form-control' , required: true } %>
           </label>
         </div>
         </div>
-      <% end %>
 
       <div class="form_group">
       <label class="col-sm-3">
@@ -48,14 +46,12 @@
       <div class="form_group">
       <label class="col-sm-3">販売ステータス</label>
 
-          <%= form_with(model: @item, local: true) do |form| %>
             <label class="col-sm-9">
-            <%= form.radio_button :status, :is_active %>
-            <%= form.label :status, "販売中", {value: :is_active, style: "display: inline-block;"} %>
-            <%= form.radio_button :status, :is_not_active %>
-            <%= form.label :status, "販売停止中", {value: :is_not_active, style: "display: inline-block;"} %>
+            <%= f.radio_button :status, :is_active %>
+            <%= f.label :status, "販売中", {value: :is_active, style: "display: inline-block;"} %>
+            <%= f.radio_button :status, :is_not_active %>
+            <%= f.label :status, "販売停止中", {value: :is_not_active, style: "display: inline-block;"} %>
             </label>
-          <% end %>
 
       </div>
 

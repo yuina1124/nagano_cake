@@ -14,11 +14,21 @@
   <tbody>
     <% @items.each do |item| %>
     <tr>
-      <th><%= items_id %></th>
-      <th><%= link_to admin_item_path(item.id) %></th>
-      <th><%= price(items_id) %></th>
-      <th><%= genres_id %></th>
-      <th><%= items_is_active %></th>
+      <th><%= item.id %></th>
+      <th>
+        <%= link_to admin_item_path(item) do %>
+          <%= item.name %>
+        <% end %>
+      </th>
+      <th><%= item.price %></th>
+      <th><%= item.genre.name %></th>
+      <th>
+        <% if item.is_active? %>
+          販売中
+        <% else %>
+          販売停止中
+        <% end %>
+      </th>
     </tr>
     <% end %>
   </tbody>
