@@ -1,21 +1,46 @@
 <h2>admin#items#edit</h2>
 
 <h2>商品編集</h2>
-<%= form_with model: @item do |f| %>
-    <h4>商品画像</h4>
-      <%= f.file_field :profile_image, placeholder:"プロフィール画像", accept:"image/*" %>
-    <h4>商品名</h4>
-      <%= f.text_field :name %>
-    <h4>商品説明</h4>
-      <%= f.text_area :introduction %>
-    <h4>ジャンル</h4>
-      <%= f.select :genre_id, {'ケーキ': 1, 'クッキー': 2,}, {include_blank: '選択してください'}, {class: 'form-control' , required: true } %>
-    <h4>税抜価格</h4>
-      <%= f.text_field :price %>
-    <h4>販売ステータス</h4>
-      <%= f.radio_button :status, :is_active %>
-      <%= f.label :status, "販売中", {value: :is_active, style: "display: inline-block;"} %>
-      <%= f.radio_button :status, :is_not_active %>
-      <%= f.label :status, "販売停止中", {value: :is_not_active, style: "display: inline-block;"} %><br>
+<%= form_with model: @item, url:admin_item_path do |f| %>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>商品画像</th>
+      <th><%= f.file_field :profile_image, placeholder:"プロフィール画像", accept:"image/*" %></th>
+    </tr>
+    <tr>
+      <th>商品名</th>
+      <th><%= f.text_field :name %></th>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <th><%= f.text_area :introduction %></th>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <th><%= f.select :genre_id, {'ケーキ': 1, 'クッキー': 2,}, {include_blank: '選択してください'}, {class: 'form-control' , required: true } %></th>
+    </tr>
+    <tr>
+      <th>税抜価格</th>
+      <th><%= f.text_field :price %></th>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <th>
+          <%= f.radio_button :status, :is_active %>
+          <%= f.label :status, "販売中", {value: :is_active, style: "display: inline-block;"} %>
+          <%= f.radio_button :status, :is_not_active %>
+          <%= f.label :status, "販売停止中", {value: :is_not_active, style: "display: inline-block;"} %><br>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+
 <%= f.submit '変更を保存' %>
 <% end %>
