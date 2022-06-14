@@ -1,1 +1,23 @@
 <h2>admin#homes#top</h2>
+
+<h2>注文履歴一覧</h2>
+
+<table class="table table-hover table-inverse ">
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <th><%= order.created_at %></th>
+        <th><%= order.customer_id %></th>
+        <th><%= order.amount %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

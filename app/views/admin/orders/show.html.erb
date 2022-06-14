@@ -1,0 +1,45 @@
+<h2>admin#order#show</h2>
+
+<h2>注文履歴詳細</h2>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>購入者</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <th><%= @order.created_at %></th>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <th><%= @order.address %></th>
+    </tr>
+    <tr>
+      <th>支払い方法</th>
+      <th><%= @order.payment_method %></th>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <th>
+        <%= f.radio_button :status, 1 %>
+        <%= f.label :status, "入金待ち", {value: 1, style: "display: inline-block;"} %>
+        <%= f.radio_button :status, 2 %>
+        <%= f.label :status, "入金確認", {value: 2, style: "display: inline-block;"} %>
+        <%= f.radio_button :status, 3 %>
+        <%= f.label :status, "制作中", {value: 3, style: "display: inline-block;"} %>
+        <%= f.radio_button :status, 4 %>
+        <%= f.label :status, "発送準備中", {value: 4, style: "display: inline-block;"} %>
+        <%= f.radio_button :status, 5 %>
+        <%= f.label :status, "発送済", {value: 5, style: "display: inline-block;"} %>
+        <%= f.submit "更新" %>
+      </th>
+    </tr>
+  </tbody>
+</table>
