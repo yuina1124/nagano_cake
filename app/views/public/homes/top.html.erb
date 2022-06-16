@@ -1,1 +1,38 @@
 <h2>public#homes#top</h2>
+
+<h4>
+  ようこそ、ながのCAKEへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。
+</h4>
+
+<h2>新着商品</h2>
+  <table class="table table-hover teble-inverse">
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+      <tr>
+        <th></th>
+      </tr>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @items.each do |item| %>
+          <th><%= link_to item_path(item) do %>
+            <%= image_tag item.get_image(100,100) %><br>
+            <%= item.name %><br>
+            <%= item.price %>
+          <% end %></th>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to items_path do %>
+    すべての商品を見る＞
+  <% end %>
