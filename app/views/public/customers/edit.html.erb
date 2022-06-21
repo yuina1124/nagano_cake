@@ -1,45 +1,53 @@
 <h2>public#customer#edit</h2>
 
 <h2>会員情報編集</h2>
-<%= form_with model: @customer do |f| %>
-<table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>氏名</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th>フリガナ</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th>郵便番号</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </tbody>
-</table>
+<%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>氏名</th>
+        <th>
+          <%= f.text_field :last_name %>
+        </th>
+        <th>
+          <%= f.text_field :first_name %>
+        </th>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <th><%= f.text_field :last_name_kana %></th>
+        <th><%= f.text_field :first_name_kana %></th>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <th><%= f.text_field :postal_code %></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th><%= f.text_field :address %></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <th><%= f.text_field :telephone_number %></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= f.text_field :email %></th>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit '編集内容を保存' %>
+<% end %>
+
+<%= link_to "退会する", customers_comfirmation_path, class:"btn btn-primary" %>

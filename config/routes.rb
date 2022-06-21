@@ -11,10 +11,10 @@ root to: "public/homes#top"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all' => 'public#cart_items#destroy_all'
     get "/customers" => "customers#show"
-    get "/customers/edit" => "customers#edit"
-    patch "/customers" => "customers#update"
-    get "/costomers/comfirmation" => "customers#comfirmation"
-    patch "/costomers" => "costomers#withdraw"
+    get "/customers/information/edit" => "customers#edit"
+    patch "/customers/information" => "customers#update"
+    get "/customers/comfirmation" => "customers#comfirmation"
+    patch "/customers/withdraw" => "customers#withdraw"
     get "/about" => "homes#about"
   end
   namespace :admin do

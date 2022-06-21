@@ -2,9 +2,7 @@
 
 <h2>マイページ</h2>
 <h2>登録情報</h2>
-<%= button_to url:customers_edit_path, method: :get do %>
-  編集する
-<% end %>
+<%= link_to "編集する", customers_information_edit_path, class:"btn btn-primary" %>
 
 <table class="table table-hover table-inverse">
   <thead>
@@ -38,7 +36,7 @@
     </tr>
     <tr>
       <th>電話番号</th>
-      <th><%= @customer.postal_code %></th>
+      <th><%= @customer.telephone_number %></th>
     </tr>
     <tr>
       <th>メールアドレス</th>
@@ -48,11 +46,7 @@
   </table>
 
   <h2>配送先</h2>
-    <%= button_to url:addresses_path do %>
-      一覧を見る
-    <% end %>
+    <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %>
 
   <h2>注文履歴</h2>
-    <%= button_to url:admin_path do %>
-      一覧を見る
-    <% end %>
+    <%= link_to "一覧を見る", admin_path, class:"btn btn-primary" %>
