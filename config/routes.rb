@@ -5,17 +5,20 @@ root to: "public/homes#top"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: 'public' do
+    get "/orders/comfirmation" => "orders#comfirmation"
+    get "/orders/completion" => "orders#completion"
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     resources :items, only: [:index, :show]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as:"destroy_all_cart_items"
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all' => 'public#cart_items#destroy_all'
     get "/customers" => "customers#show"
     get "/customers/information/edit" => "customers#edit"
     patch "/customers/information" => "customers#update"
     get "/customers/comfirmation" => "customers#comfirmation"
     patch "/customers/withdraw" => "customers#withdraw"
     get "/about" => "homes#about"
+    get "/orders/completion" => "orders#completion"
   end
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

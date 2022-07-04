@@ -1,1 +1,46 @@
 <h2>public#order#comfirmation</h2>
+
+<h2>注文情報確認</h2>
+  <%= form_with model: @order do |f| %>
+      <table>
+        <thead>
+          <th>
+            <tr>商品名</tr>
+            <tr>単価（税込）</tr>
+            <tr>数量</tr>
+            <tr>小計</tr>
+          </th>
+        </thead>
+        <tbody>
+          <th>
+            <tr><%= @order.name %></tr>
+            <tr><%= @order.items.price %></tr>
+            <tr><%= @order.cart_item.amount %></tr>
+            <tr><%= @order.cart_item.subtotal %></tr>
+          </th>
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <td>
+            <th>送料</th>
+            <th>商品合計</th>
+            <th>請求金額</th>
+          </td>
+        </thead>
+        <tbody>
+          <td>
+            <th>800</th>
+            <th><% @total +=  cart_item.subtotal %></th>
+            <th><% @total +=  cart_item.subtotal %>+800</th>
+          </td>
+        </tbody>
+      </table>
+
+    <h3>支払方法</h3>
+      <%= @order.cart_item.payment_method %>
+    <h3>お届け先</h3>
+      <%= @order.cart_item.address %>
+    <%= f.submit "注文を確定する" %>
+  <% end %>

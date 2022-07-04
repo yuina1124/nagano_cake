@@ -1,1 +1,30 @@
 <h2>public#order#index</h2>
+
+<h2>注文履歴一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th><%= @order.created_at %></th>
+            <th><%= @order.address %></th>
+            <th><%= @order.item.name %></th>
+            <th><% @total +=  cart_item.subtotal %>+800</th>
+            <th><%= @order.status %></th>
+            <th>
+              <%= link_to ordre_path do %>
+                表示する
+              <% end %>
+            </th>
+        </tr>
+    </thead>
+</table>
