@@ -6,6 +6,7 @@ root to: "public/homes#top"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: 'public' do
     get "/orders/comfirmation" => "orders#comfirmation"
+    post "/orders/comfirmation" => "orders#comfirmation"
     get "/orders/completion" => "orders#completion"
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
@@ -18,7 +19,6 @@ root to: "public/homes#top"
     get "/customers/comfirmation" => "customers#comfirmation"
     patch "/customers/withdraw" => "customers#withdraw"
     get "/about" => "homes#about"
-    get "/orders/completion" => "orders#completion"
   end
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

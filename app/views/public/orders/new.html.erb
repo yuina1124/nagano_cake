@@ -2,7 +2,7 @@
 
 <h2>注文情報入力</h2>
 
-<%= form_with model: @order, url:orders_path, method: :post do |f| %>
+<%= form_with model: @order, url: orders_comfirmation_path, method: :post do |f| %>
   <h3>支払い方法</h3>
   <div class="form_group">
     <%= f.radio_button :payment_method, 0 %>
@@ -11,15 +11,15 @@
     <%= f.label :payment_method, "銀行振り込み", {value: :payment_method, style: "display: inline-block;"} %>
   </div>
   <h3>お届け先</h3>
-    <%= f.radio_button :addresses, true %>
+    <%= f.radio_button :addresses, 0 %>
     <%= f.label :is_active, "ご自身の住所" %>
     <%= current_customer.address %><br>
 
-    <%= f.radio_button :addresses, false %>
+    <%= f.radio_button :addresses, 1 %>
     <%= f.label :is_active, "登録済み住所から選択" %>
-    <%= f.collection_select(:address, current_customer.addresses, :id, :address, prompt: "選択してください") %><br>
+    <%= f.select :address_id,options_from_collection_for_select(current_customer.addresses, :id, :address, :address_display) %><br>
 
-    <%= f.radio_button :addresses, false %>
+    <%= f.radio_button :addresses, 2 %>
     <%= f.label :is_active, "新しいお届け先" %>
       <table>
         <thead>
