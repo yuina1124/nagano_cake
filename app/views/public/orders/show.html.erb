@@ -15,7 +15,11 @@
     <tbody>
       <td>
         <tr><%= @order.created_at %></tr>
-        <tr><%= @order.address %></tr>
+        <tr>
+          <%= @order.postal_code %>
+          <%= @order.address %>
+          <%= @order.name %>
+        </tr>
         <tr><%= @order.payment_method %></tr>
         <tr><%= @order.status %></tr>
       </td>
@@ -53,11 +57,11 @@
   <tbody>
     <tr>
       <% @orders.each do |order| %>
-        <td><%= order.name %></td>
+        <td><%= order.item.name %></td>
         <td><%= order.price %></td>
         <td><%= order.amount %></td>
-        <td><%= cart_item.subtotal %></td>
-        <% @total +=  cart_item.subtotal %>
+        <td><%= order.price*1.1*order.amount %></td>
+        <% @total +=  order.price*1.1*order.amount %>
       <% end %>
     </tr>
   </tbody>
