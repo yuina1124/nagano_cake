@@ -1,11 +1,11 @@
 <h2>public#items#show</h2>
 
 <%= form_with model: @cart_item do |f| %>
-<%= image_tag @item.get_image(100,100) %><br>
-<%= @item.name %><br>
-<%= @item.introduction %><br>
-<%= @item.price %><br>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :amount, *[1..10] %>
-<%= f.submit "カートにいれる" %>
+    <%= image_tag @item.get_image(100,100) %><br>
+    <%= @item.name %><br>
+    <%= @item.introduction %><br>
+    <%= @item.price %><br>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.submit "カートにいれる" %>
 <% end %>

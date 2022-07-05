@@ -1,1 +1,65 @@
 <h2>public#order#show</h2>
+
+<h2>注文履歴詳細</h2>
+
+<h4>注文情報</h4>
+  <table>
+    <thead>
+      <th>
+        <tr>注文日</tr>
+        <tr>配送先</tr>
+        <tr>支払い方法</tr>
+        <tr>ステータス</tr>
+      </th>
+    </thead>
+    <tbody>
+      <td>
+        <tr><%= @order.created_at %></tr>
+        <tr><%= @order.address %></tr>
+        <tr><%= @order.payment_method %></tr>
+        <tr><%= @order.status %></tr>
+      </td>
+    </tbody>
+  </table>
+
+<h4>請求情報</h4>
+  <table>
+    <thead>
+      <th>
+        <tr>商品合計</tr>
+        <tr>配送料</tr>
+        <tr>ご請求額</tr>
+      </th>
+    </thead>
+    <tbody>
+      <td>
+        <tr><%= @total %></tr>
+        <tr>800</tr>
+        <tr><%= @total +800 %></tr>
+      </td>
+    </tbody>
+  </table>
+
+<h4>注文内容</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @orders.each do |order| %>
+        <td><%= order.name %></td>
+        <td><%= order.price %></td>
+        <td><%= order.amount %></td>
+        <td><%= cart_item.subtotal %></td>
+        <% @total +=  cart_item.subtotal %>
+      <% end %>
+    </tr>
+  </tbody>
+
+</table>
