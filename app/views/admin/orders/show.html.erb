@@ -11,7 +11,10 @@
   <tbody>
     <tr>
       <th>購入者</th>
-      <th></th>
+      <th>
+        <%= @order.customer.first_name %>
+        <%= @order.customer.last_name %>
+      </th>
     </tr>
     <tr>
       <th>注文日</th>
@@ -19,27 +22,60 @@
     </tr>
     <tr>
       <th>配送先</th>
-      <th><%= @order.address %></th>
+      <th>
+        <%= @order.postal_code %>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </th>
     </tr>
     <tr>
       <th>支払い方法</th>
       <th><%= @order.payment_method %></th>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
     <tr>
-      <th>注文ステータス</th>
-      <th>
-        <%= f.radio_button :status, 1 %>
-        <%= f.label :status, "入金待ち", {value: 1, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, 2 %>
-        <%= f.label :status, "入金確認", {value: 2, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, 3 %>
-        <%= f.label :status, "制作中", {value: 3, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, 4 %>
-        <%= f.label :status, "発送準備中", {value: 4, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, 5 %>
-        <%= f.label :status, "発送済", {value: 5, style: "display: inline-block;"} %>
-        <%= f.submit "更新" %>
-      </th>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+        <td><%= order.item.name %></td>
+        <td><%= order.price %></td>
+        <td><%= order.amount %></td>
+        <td><%= (order.price*1.1*order.amount).floor %></td>
+        <% @total += (order.price*1.1*order.amount).floor %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total %>円</td>
+    </tr>
+    <tr>
+      <td>送料</td>
+      <td>800円</td>
+    </tr>
+    <tr>
+      <td>請求金額合計</td>
+      <td><%= @total + 800 %>円</td>
     </tr>
   </tbody>
 </table>

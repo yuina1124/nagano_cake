@@ -14,9 +14,13 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <th><%= order.created_at %></th>
+        <th>
+          <%= link_to admin_order_path(order) do %>
+            <%= order.created_at %>
+          <% end %>
+        </th>
         <th><%= order.customer_id %></th>
-        <th><%= order.amount %></th>
+        <th><%= order.order_details.sum(:amount) %></th>
       </tr>
     <% end %>
   </tbody>

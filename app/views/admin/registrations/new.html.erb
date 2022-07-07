@@ -4,38 +4,38 @@
   <%= render "admins/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%=f.label :（姓） %>
-    <%=f.text_field :last_name %>
+    <%= f.label :（姓） %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%=f.label :（名） %>
-    <%=f.text_field :first_name %>
+    <%= f.label :（名） %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%=f.label :（セイ） %>
-    <%=f.text_field :last_name_kana %>
+    <%= f.label :（セイ） %>
+    <%= f.text_field :last_name_kana %>
   </div>
 
   <div class="field">
-    <%=f.label :（メイ） %>
-    <%=f.text_field :first_name_kana %>
+    <%= f.label :（メイ） %>
+    <%= f.text_field :first_name_kana %>
   </div>
 
   <div class="field">
     <%= f.label :郵便番号（ハイフンなし） %>
-    <%= f.email_field :postal_code, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :postal_code %>
   </div>
 
   <div class="field">
     <%= f.label :住所 %>
-    <%= f.email_field :adderss, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :adderss %>
   </div>
 
   <div class="field">
     <%= f.label :電話番号（ハイフンなし） %>
-    <%= f.email_field :telephone_number, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :telephone_number %>
   </div>
 
   <div class="field">

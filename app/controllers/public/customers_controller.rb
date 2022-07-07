@@ -15,6 +15,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def comfirmation
+    @customer = Customer.all
   end
 
   def withdraw

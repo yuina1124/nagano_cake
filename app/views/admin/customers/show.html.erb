@@ -48,10 +48,10 @@
       <tr>
         <th>会員ステータス</th>
         <th>
-          <% if @customer.is_active? %>
-              有効
-          <% else %>
+          <% if @customer.is_deleted? %>
               退会
+          <% else %>
+              有効
           <% end %>
         </th>
       </tr>
